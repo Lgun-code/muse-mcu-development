@@ -1,0 +1,40 @@
+先看这个文件再打开工程！READ THIS FIRST
+========================================
+
+
+v1 的.uvprojx 是手写的，结构和 Keil 要求的不一样，
+Keil 读到就报 "Cannot read project file"。
+v2 的.uvprojx /.uvoptx 是用 ST 官方 STM32CubeF1 的
+GPIO_IOToggle 例子工程做骨架重建的，只改了芯片、
+文件列表、头文件路径等必要内容。
+
+
+Keil uVision5 老版本读中文路径会直接报错。
+正确做法：
+解压到 D:\STM32F103C8T6-Keil\
+解压后工程在 D:\STM32F103C8T6-Keil\stm32f103c8t6-keil\MDK-ARM\STM32F103C8T6.uvprojx
+错误做法（不要这样放）：
+D:\桌面\STM32F103C8T6-Keil\... <- 含中文，一定报错
+C:\Users\你的名字\Desktop\... <- 含中文，一定报错
+任何带中文、带空格的路径都不要用。
+
+
+双击 MDK-ARM\STM32F103C8T6.uvprojx，用 Keil uVision5 打开。
+第一次打开如果提示装 Device Pack，装 Keil.STM32F1xx_DFP。
+
+
+按 F7 编译（正常 0 错误 0 警告），ST-Link 接 SWDIO / SWCLK /
+GND / 3.3V，按 F8 烧录。PC13 灯每 500ms 闪一次，
+串口 115200 每秒收到 Hello STM32F103C8T6 + 计数。
+
+
+不要只发“打不开”三个字，请把下面信息发回来：
+1. Keil 弹的完整报错原文（截图或文字）
+2. 你的 Keil 版本（Help -> About uVision，写版本号）
+3. 工程解压后的完整路径（例如 D:\STM32F103C8T6-Keil\...）
+4. 有没有装 Keil.STM32F1xx_DFP
+备用方案（见 README.md 末尾）：在 Keil 里新建一个空工程，
+器件选 STM32F103C8，再把 Core 和 Drivers 里的.c/.h 文件
+按 README 里的分组加进去，照着 README 配头文件路径和宏，
+一样能编译。源码 main.c 和 HAL 库本身没有问题，
+云端 GCC 已经编译通过（Flash 6980 字节，RAM 232 字节）。

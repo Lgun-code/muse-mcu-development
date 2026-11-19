@@ -1,0 +1,38 @@
+READ THIS FIRST - template, fill in the <...> parts per project
+================================================================
+
+This project's .uvprojx / .uvoptx were built by editing an official
+ST example project (skeleton surgery), NOT hand-written. Hand-written
+project files are the number one cause of Keil reporting
+"Cannot read project file".
+
+1. PATH RULE (second most common cause)
+   Unzip to a pure-ASCII short path, for example:
+       D:\<ProjectName>\
+   Never the Desktop, never a path containing non-ASCII characters
+   or spaces. Keil uVision5 legacy builds fail on such paths with
+   the same "Cannot read project file" message.
+
+2. OPEN
+   Double-click MDK-ARM\<Target>.uvprojx in Keil uVision5.
+   If Keil asks for a Device Pack, install it from Pack Installer
+   (for STM32F1: Keil.STM32F1xx_DFP).
+
+3. BUILD AND FLASH
+   F7 builds (expect 0 errors, 0 warnings, hex under MDK-ARM\Objects\).
+   Connect ST-Link to SWDIO / SWCLK / GND / 3.3V, power the board,
+   F8 flashes. Ctrl+F5 starts a debug session (port must be SWD).
+   <Expected behaviour of this firmware: ...>
+
+4. IF IT FAILS, REPORT THESE FOUR THINGS
+   1) The full error text (screenshot or copied text)
+   2) Keil version (Help -> About uVision)
+   3) The full path you unzipped to
+   4) Whether the Device Pack is installed
+   "It won't open" alone cannot be debugged.
+
+5. FALLBACK
+   The sources themselves are verified (cloud GCC build passed, see
+   README.md). If the project file still fails, create a fresh empty
+   Keil project for the same device and add the Core and Drivers
+   sources as described at the end of README.md.

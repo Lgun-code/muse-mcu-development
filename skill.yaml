@@ -1,0 +1,5 @@
+name: muse_mcu_development
+title: Muse MCU development (STM32 + Keil, cloud-verified)
+description: Build STM32 firmware from a Linux Muse VM end to end: deploy the PlatformIO toolchain, scaffold a self-contained HAL project, verify it with GCC, generate a Keil uVision5 project by official-skeleton surgery (never hand-written), and hand over a versioned package the user opens, builds with F7 and flashes with F8 on Windows. Fully validated on STM32F103C8T6 (Blue Pill); the same workflow adapts to other STM32 chips.
+category: Work and knowledge
+include_in_prompt: true
